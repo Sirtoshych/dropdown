@@ -4,7 +4,7 @@
     flex-direction: column;
 }
 .itemsContainer{
-    margin-top: 16px;
+    margin-top: 8px;
 }
 .listItem{
     cursor: pointer;
@@ -23,7 +23,11 @@
     color: #FFFFFF;
 }
 .listItemIcon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 24px;
+    height: 24px;
 }
 .listItemLabel{
     line-height: 20px;

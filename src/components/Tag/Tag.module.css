@@ -6,7 +6,7 @@
     padding: 5px 10px 5px 10px;
 
     justify-content: center;
-    align-content: center;
+    align-items: center;
 
     font-size: 12px;
     color: #323A63;
@@ -18,5 +18,6 @@
 .tagIcon{
     align-self: center;
     flex: 1;
+    display: flex;
     cursor: pointer;
 }
