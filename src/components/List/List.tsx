@@ -30,7 +30,7 @@ const List: FC<ListProps> = ({searchable, items, onItemClick, selectedItems, onS
     return <div className={styles.container}>
         {searchable && <Search onChange={handleSearchChange} defaultValue={searchText} icon={<SearchIcon/> }/>}
         <div className={styles.itemsContainer}>
-            {items.map((item, index)=>
+            {items.slice(0,5).map((item, index)=>
                 <ListItem
                     isSelected={selectedItems.includes(item.id)}
                     onClick={handleItemClick}

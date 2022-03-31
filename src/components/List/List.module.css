@@ -27,7 +27,9 @@
 }
 .listItemLabel{
     line-height: 20px;
-
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .selected{
     background: #D4D4D4;
