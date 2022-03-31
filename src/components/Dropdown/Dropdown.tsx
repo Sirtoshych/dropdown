@@ -39,6 +39,7 @@ const Dropdown: FC<DropdownProps> = ({isVisible}) => {
         }
     }
     const handleUsersListClick = (id: string, label: string) => handleItemSelect(id, label, USERS)
+    const handleIntegrationsListClick = (id: string, label: string) => handleItemSelect(id, label, INTEGRATIONS)
 
     const handleUsersSearch = useCallback((value: string) => {
         getUsers(value).then(setUsers)
@@ -67,7 +68,7 @@ const Dropdown: FC<DropdownProps> = ({isVisible}) => {
                     searchable
                     onSearch={handleIntegrationsSearch}
                     items={integrations}
-                    onItemClick={(id, label) => handleItemSelect(id, label, INTEGRATIONS)}
+                    onItemClick={handleIntegrationsListClick}
                     selectedItems={selectedItems}
                 />
             </Tab>
