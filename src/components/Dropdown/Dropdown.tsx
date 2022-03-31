@@ -20,6 +20,13 @@ const Dropdown: FC<DropdownProps> = ({isVisible}) => {
     const {integrations, setIntegrations} = useContext(IntegrationsContext)
     const [selectedItems, setSelectedItems] = useState<Array<string>>(() => tags.map(tag => tag.id))
 
+    useEffect(()=>{
+        if(isVisible){
+            getUsers().then(setUsers)
+            getIntegrations().then(setIntegrations)
+        }
+    }, [isVisible])
+
     useEffect(() => {
         setSelectedItems(tags.map(tag => tag.id))
     }, [tags])

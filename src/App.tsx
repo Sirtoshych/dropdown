@@ -3,11 +3,9 @@ import FilterButton from "./components/FilterButton/FilterButton";
 import TagsList from "./components/TagsList/TagsList";
 import {ITag} from './components/Tag/Tag'
 import {TagsContext} from "./contexts/tagsContext";
-import {getUsers} from "./api/users";
 import {Integration, User} from "./types";
 import UsersContext from "./contexts/usersContext";
 import IntegrationsContext from "./contexts/integrationsContext";
-import {getIntegrations} from "./api/integrations";
 
 function App() {
     const [tags, setTags] = useState<Array<ITag>>([]);
@@ -24,10 +22,6 @@ function App() {
         if (storedTags) {
             setTags(JSON.parse(storedTags));
         }
-
-        getUsers().then(setUsers)
-
-        getIntegrations().then(setIntegrations)
     }, [])
 
     const tagsContextDefault = useMemo(()=> ({tags, setTags: cacheTags}), [tags,setTags])
