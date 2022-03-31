@@ -1,0 +1,38 @@
+.container{
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+.itemsContainer{
+    margin-top: 16px;
+}
+.listItem{
+    cursor: pointer;
+    margin-top: 2px;
+    color: #9FA2B4;
+    padding: 6px 6px 4px 6px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+
+    align-content: center;
+}
+.listItem:hover{
+    background: #99CC98;
+    color: #FFFFFF;
+}
+.listItemIcon{
+    width: 24px;
+}
+.listItemLabel{
+    line-height: 20px;
+
+}
+.selected{
+    background: #D4D4D4;
+    color: #FFFFFF;
+}
+.selected:hover{
+    background: #339933;
+}

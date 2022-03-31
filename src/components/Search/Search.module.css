@@ -1,0 +1,21 @@
+.container{
+    flex: 1;
+    display: flex;
+    padding: 12px;
+
+    border: 1px solid #DEDEDE;
+    border-radius: 5px;
+}
+.input{
+    border: none;
+    flex: 1;
+    font-size: 14px;
+
+    font-family: 'Work Sans';
+}
+.input:focus-visible{
+    outline: none;
+}
+.icon{
+    flex: 1;
+}

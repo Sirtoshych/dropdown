@@ -6,10 +6,10 @@
     border-radius: 4px;
     padding: 14px;
 
+    cursor: pointer;
+
     color: #339933;
     font-family: 'Work Sans';
-    font-style: normal;
-    font-weight: 400;
     font-size: 14px;
     line-height: 16px;
     display: flex;

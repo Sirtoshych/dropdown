@@ -1,0 +1,22 @@
+.tag{
+    display: flex;
+    flex-direction: row;
+    background: #F1F5F5;
+    border-radius: 50px;
+    padding: 5px 10px 5px 10px;
+
+    justify-content: center;
+    align-content: center;
+
+    font-size: 12px;
+    color: #323A63;
+    gap: 6px;
+}
+.tagLabel{
+    align-self: center;
+}
+.tagIcon{
+    align-self: center;
+    flex: 1;
+    cursor: pointer;
+}
