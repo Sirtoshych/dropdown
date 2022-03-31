@@ -1,4 +1,4 @@
-import {FC, ReactElement} from "react";
+import {FC} from "react";
 import styles from './List.module.css';
 
 export interface Item {
@@ -15,7 +15,7 @@ interface ListItemProps{
 
 const ListItem: FC<ListItemProps> = ({item, onClick, isSelected}) => {
     return <div onClick={()=>onClick(item)} className={`${styles.listItem} ${isSelected ? styles.selected : ''}`}>
-        <div className={styles.listItemIcon}> <img src={item.img} /> </div>
+        <div className={styles.listItemIcon}> <img src={item.img} alt={''} /> </div>
         <span className={styles.listItemLabel}>{item.label}</span>
     </div>
 }

@@ -4,11 +4,12 @@ import {ReactComponent as SearchIcon} from "../Icons/search.svg";
 
 interface SearchProps{
     onChange: (value: string) => void
+    defaultValue: string,
     icon?: ReactElement
 }
 
-const Search: FC<SearchProps> = ({onChange}) => {
-    const [value, setValue] = useState('');
+const Search: FC<SearchProps> = ({onChange, defaultValue}) => {
+    const [value, setValue] = useState(defaultValue);
 
     const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
         const text = event.currentTarget.value;

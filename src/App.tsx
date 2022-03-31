@@ -15,7 +15,17 @@ function App() {
     const [users, setUsers] = useState<Array<User>>([]);
     const [integrations, setIntegrations] = useState<Array<Integration>>([]);
 
+    const cacheTags = (tags: Array<ITag>) => {
+        localStorage.setItem('tags', JSON.stringify(tags))
+        setTags(tags)
+    }
+
     useEffect(()=>{
+        const storedTags = localStorage.getItem('tags');
+        if(storedTags){
+            setTags(JSON.parse(storedTags));
+        }
+
         getUsers().then((users) => {
             setUsers(users)
         })
@@ -26,7 +36,7 @@ function App() {
     }, [])
 
     return (
-        <TagsContext.Provider value={{tags,setTags}}>
+        <TagsContext.Provider value={{tags,setTags: cacheTags}}>
             <UsersContext.Provider value={{users,setUsers}}>
                 <IntegrationsContext.Provider value={{integrations,setIntegrations}}>
                     <div className="App">
