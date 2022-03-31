@@ -1,11 +1,12 @@
-export interface User{
+export interface User {
     label: string;
-    id: string
-    img: string
+    id: string;
+    img: string;
 }
-//could be same as user?
-export interface Integration{
+
+//Looks this same as user so probably could be the same and renamed
+export interface Integration {
     label: string;
-    id: string
-    img: string
+    id: string;
+    img: string;
 }
