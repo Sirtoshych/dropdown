@@ -19,9 +19,9 @@ const Tag: FC<TagProps> = ({tag}) => {
         setTags([...tags.filter(el => el.id !== tag.id)])
     }
 
-    return <div onClick={handleClick} className={styles.tag}>
+    return <div className={styles.tag}>
         <span className={styles.tagLabel}>{tag.label}</span>
-        <div className={styles.tagIcon}><CloseIcon width={'14px'} height={'14px'}/></div>
+        <div onClick={handleClick}  className={styles.tagIcon}><CloseIcon width={'14px'} height={'14px'}/></div>
     </div>
 }
 
