@@ -1,7 +1,7 @@
 import React, {FC, ReactElement} from 'react'
 import styles from './Button.module.css';
 
-interface ButtonProps{
+interface ButtonProps {
     label: string
     onClick: () => void
     icon: ReactElement

@@ -1,9 +1,10 @@
 import {FC} from 'react';
-interface TabInterface{
+
+interface TabInterface {
     label: string;
 }
 
-const Tab: FC<TabInterface> = ({ children }) => {
+const Tab: FC<TabInterface> = ({children}) => {
     return <div>{children}</div>
 }
 export default Tab;

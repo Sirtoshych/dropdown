@@ -3,6 +3,7 @@ import {ReactComponent as Plus} from "../Icons/plus.svg";
 import Dropdown from "../Dropdown/Dropdown";
 import React, {useEffect, useRef, useState} from "react";
 import styles from './FilterButton.module.css'
+import {FILTER_BUTTON_LABEL} from "../../consts";
 
 const FilterButton = () => {
     const [isDropdownVisible, setIsDropdownVisible] = useState(false);
@@ -13,7 +14,7 @@ const FilterButton = () => {
     }
 
     useEffect(() => {
-        const handleClickOutside = (event: MouseEvent ) => {
+        const handleClickOutside = (event: MouseEvent) => {
             //@ts-ignore have to ignore here because for some reason can't type it right atm
             if (ref.current && !ref.current.contains(event.target)) {
                 setIsDropdownVisible(false);
@@ -23,10 +24,10 @@ const FilterButton = () => {
         return () => {
             document.removeEventListener('click', handleClickOutside, true);
         };
-    }, [  ]);
+    }, []);
 
     return <div ref={ref} className={styles.container}>
-        <Button label={'Add Filter'} onClick={handleButtonClick} icon={<Plus/>}/>
+        <Button label={FILTER_BUTTON_LABEL} onClick={handleButtonClick} icon={<Plus/>}/>
         <Dropdown
             isVisible={isDropdownVisible}
         />

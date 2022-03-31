@@ -7,15 +7,16 @@ export interface ITag {
     label: string,
     id: string,
 }
-interface TagProps{
+
+interface TagProps {
     tag: ITag
 }
 
-const Tag:FC<TagProps> = ({tag}) => {
-    const { tags,setTags } = useContext(TagsContext)
+const Tag: FC<TagProps> = ({tag}) => {
+    const {tags, setTags} = useContext(TagsContext)
 
     const handleClick = () => {
-        setTags( [...tags.filter( el => el.id !== tag.id)])
+        setTags([...tags.filter(el => el.id !== tag.id)])
     }
 
     return <div onClick={handleClick} className={styles.tag}>

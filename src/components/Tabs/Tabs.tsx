@@ -1,10 +1,11 @@
 import {useState, FC, ReactElement} from "react";
 import styles from './Tabs.module.css'
-interface TabsInterface  {
+
+interface TabsInterface {
     children: ReactElement[]
 }
 
-const Tabs: FC<TabsInterface> = ({ children }) => {
+const Tabs: FC<TabsInterface> = ({children}) => {
     const [selectedTab, setSelectedTab] = useState(0)
 
     const onClick = (index: number) => {
@@ -16,7 +17,8 @@ const Tabs: FC<TabsInterface> = ({ children }) => {
             <ul className={styles.container}>
                 {children.map((item, index) => (
                     <li key={index}>
-                        <div className={`${styles.tabLabel} ${index === selectedTab && styles.activeTabLabel}`} onClick={() => onClick(index)}>{item.props.label}</div>
+                        <div className={`${styles.tabLabel} ${index === selectedTab && styles.activeTabLabel}`}
+                             onClick={() => onClick(index)}>{item.props.label}</div>
                     </li>
                 ))}
             </ul>
@@ -24,6 +26,5 @@ const Tabs: FC<TabsInterface> = ({ children }) => {
         </div>
     )
 }
-
 
 export default Tabs;

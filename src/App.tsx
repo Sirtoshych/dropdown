@@ -20,9 +20,9 @@ function App() {
         setTags(tags)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         const storedTags = localStorage.getItem('tags');
-        if(storedTags){
+        if (storedTags) {
             setTags(JSON.parse(storedTags));
         }
 
@@ -36,12 +36,12 @@ function App() {
     }, [])
 
     return (
-        <TagsContext.Provider value={{tags,setTags: cacheTags}}>
-            <UsersContext.Provider value={{users,setUsers}}>
-                <IntegrationsContext.Provider value={{integrations,setIntegrations}}>
+        <TagsContext.Provider value={{tags, setTags: cacheTags}}>
+            <UsersContext.Provider value={{users, setUsers}}>
+                <IntegrationsContext.Provider value={{integrations, setIntegrations}}>
                     <div className="App">
-                        <FilterButton />
-                        <TagsList />
+                        <FilterButton/>
+                        <TagsList/>
                     </div>
                 </IntegrationsContext.Provider>
             </UsersContext.Provider>

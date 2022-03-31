@@ -16,7 +16,7 @@ const MOCKED_USERS = [
 
 
 export const getUsers = async (searchText: string = ''): Promise<Array<User>> => {
-    return new Promise((res)=>{
+    return new Promise((res) => {
         const filtered = MOCKED_USERS.filter(({label}) =>
             label.toLowerCase().includes(searchText.toLowerCase()));
         res(filtered)

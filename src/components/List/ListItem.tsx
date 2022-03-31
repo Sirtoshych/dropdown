@@ -7,15 +7,15 @@ export interface Item {
     label: string;
 }
 
-interface ListItemProps{
+interface ListItemProps {
     item: Item;
     onClick: (item: Item) => void;
     isSelected: boolean
 }
 
 const ListItem: FC<ListItemProps> = ({item, onClick, isSelected}) => {
-    return <div onClick={()=>onClick(item)} className={`${styles.listItem} ${isSelected ? styles.selected : ''}`}>
-        <div className={styles.listItemIcon}> <img src={item.img} alt={''} /> </div>
+    return <div onClick={() => onClick(item)} className={`${styles.listItem} ${isSelected ? styles.selected : ''}`}>
+        <div className={styles.listItemIcon}><img src={item.img} alt={''}/></div>
         <span className={styles.listItemLabel}>{item.label}</span>
     </div>
 }

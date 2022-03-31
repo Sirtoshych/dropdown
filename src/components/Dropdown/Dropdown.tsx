@@ -8,36 +8,37 @@ import UsersContext from "../../contexts/usersContext";
 import IntegrationsContext from "../../contexts/integrationsContext";
 import {getUsers} from "../../api/users";
 import {getIntegrations} from "../../api/integrations";
+import {INTEGRATIONS, USERS} from "../../consts";
 
 interface DropdownProps {
     isVisible: boolean;
 }
 
-const Dropdown: FC<DropdownProps> = ({isVisible }) => {
-    const { tags , setTags} = useContext(TagsContext)
-    const { users, setUsers } = useContext(UsersContext)
-    const { integrations, setIntegrations } = useContext(IntegrationsContext)
-    const [selectedItems, setSelectedItems] = useState<Array<string>>(()=>tags.map(tag => tag.id))
+const Dropdown: FC<DropdownProps> = ({isVisible}) => {
+    const {tags, setTags} = useContext(TagsContext)
+    const {users, setUsers} = useContext(UsersContext)
+    const {integrations, setIntegrations} = useContext(IntegrationsContext)
+    const [selectedItems, setSelectedItems] = useState<Array<string>>(() => tags.map(tag => tag.id))
 
-    useEffect(()=>{
-      setSelectedItems(tags.map(tag => tag.id))
+    useEffect(() => {
+        setSelectedItems(tags.map(tag => tag.id))
     }, [tags])
 
     const handleItemSelect = (id: string, label: string, type: string) => {
-        if(selectedItems.includes(id)){
+        if (selectedItems.includes(id)) {
             setTags(tags.filter(tag => tag.id !== id))
-        }else{
+        } else {
             setTags([...tags, {id, label: `${type}: ${label}`}])
         }
     }
 
-    const handleUsersSearch =(value:string) => {
+    const handleUsersSearch = (value: string) => {
         getUsers(value).then((users) => {
             setUsers(users)
         })
     }
 
-    const handleIntegrationsSearch =(value:string) => {
+    const handleIntegrationsSearch = (value: string) => {
         getIntegrations(value).then((integrations) => {
             setIntegrations(integrations)
         })
@@ -46,30 +47,30 @@ const Dropdown: FC<DropdownProps> = ({isVisible }) => {
     if (!isVisible)
         return null;
 
-    return <div  className={styles.container}>
+    return <div className={styles.container}>
         <Tabs>
-            <Tab label={'Users'} >
+            <Tab label={USERS}>
                 <List
-                    key={'Users'}
+                    key={USERS}
                     searchable
                     items={users}
-                    onItemClick={(id, label)=>handleItemSelect(id, label, 'User')}
+                    onItemClick={(id, label) => handleItemSelect(id, label, USERS)}
                     selectedItems={selectedItems}
                     onSearch={handleUsersSearch}
                 />
             </Tab>
-            <Tab label={'Integrations'} >
+            <Tab label={INTEGRATIONS}>
                 <List
-                    key={'Integrations'}
+                    key={INTEGRATIONS}
                     searchable
                     onSearch={handleIntegrationsSearch}
                     items={integrations}
-                    onItemClick={(id, label)=>handleItemSelect(id, label, 'Integration')}
+                    onItemClick={(id, label) => handleItemSelect(id, label, INTEGRATIONS)}
                     selectedItems={selectedItems}
                 />
             </Tab>
         </Tabs>
-    </div> ;
+    </div>;
 }
 
 export default Dropdown;
