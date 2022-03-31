@@ -1,4 +1,4 @@
-import React, {FC, useContext, useEffect, useState} from 'react'
+import React, {FC, useCallback, useContext, useEffect, useState} from 'react'
 import styles from './Dropdown.module.css';
 import Tabs from "../Tabs/Tabs";
 import Tab from "../Tab/Tab";
@@ -31,18 +31,15 @@ const Dropdown: FC<DropdownProps> = ({isVisible}) => {
             setTags([...tags, {id, label: `${type}: ${label}`}])
         }
     }
+    const handleUsersListClick = (id: string, label: string) => handleItemSelect(id, label, USERS)
 
-    const handleUsersSearch = (value: string) => {
-        getUsers(value).then((users) => {
-            setUsers(users)
-        })
-    }
+    const handleUsersSearch = useCallback((value: string) => {
+        getUsers(value).then(setUsers)
+    }, [])
 
-    const handleIntegrationsSearch = (value: string) => {
-        getIntegrations(value).then((integrations) => {
-            setIntegrations(integrations)
-        })
-    }
+    const handleIntegrationsSearch = useCallback((value: string) => {
+        getIntegrations(value).then(setIntegrations)
+    }, [])
 
     if (!isVisible)
         return null;
@@ -51,17 +48,15 @@ const Dropdown: FC<DropdownProps> = ({isVisible}) => {
         <Tabs>
             <Tab label={USERS}>
                 <List
-                    key={USERS}
                     searchable
                     items={users}
-                    onItemClick={(id, label) => handleItemSelect(id, label, USERS)}
+                    onItemClick={handleUsersListClick}
                     selectedItems={selectedItems}
                     onSearch={handleUsersSearch}
                 />
             </Tab>
             <Tab label={INTEGRATIONS}>
                 <List
-                    key={INTEGRATIONS}
                     searchable
                     onSearch={handleIntegrationsSearch}
                     items={integrations}

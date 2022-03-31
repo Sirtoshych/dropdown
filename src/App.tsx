@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import FilterButton from "./components/FilterButton/FilterButton";
-import './App.css'
 import TagsList from "./components/TagsList/TagsList";
 import {ITag} from './components/Tag/Tag'
 import {TagsContext} from "./contexts/tagsContext";
@@ -26,19 +25,19 @@ function App() {
             setTags(JSON.parse(storedTags));
         }
 
-        getUsers().then((users) => {
-            setUsers(users)
-        })
+        getUsers().then(setUsers)
 
-        getIntegrations().then((integrations) => {
-            setIntegrations(integrations)
-        })
+        getIntegrations().then(setIntegrations)
     }, [])
 
+    const tagsContextDefault = useMemo(()=> ({tags, setTags: cacheTags}), [tags,setTags])
+    const usersContextDefault = useMemo(()=> ({users, setUsers}), [users,setUsers])
+    const integrationsContextDefault = useMemo(()=> ({integrations, setIntegrations}), [integrations,setIntegrations])
+
     return (
-        <TagsContext.Provider value={{tags, setTags: cacheTags}}>
-            <UsersContext.Provider value={{users, setUsers}}>
-                <IntegrationsContext.Provider value={{integrations, setIntegrations}}>
+        <TagsContext.Provider value={tagsContextDefault}>
+            <UsersContext.Provider value={usersContextDefault}>
+                <IntegrationsContext.Provider value={integrationsContextDefault}>
                     <div className="App">
                         <FilterButton/>
                         <TagsList/>
