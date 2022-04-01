@@ -1,4 +1,4 @@
-import {useState, FC, ReactElement} from "react";
+import {useState, FC, ReactElement, cloneElement} from "react";
 import styles from './Tabs.module.css'
 
 interface TabsInterface {
@@ -22,7 +22,7 @@ const Tabs: FC<TabsInterface> = ({children}) => {
                     </li>
                 ))}
             </ul>
-            {children[selectedTab]}
+            {cloneElement(children[selectedTab], {key: selectedTab})}
         </div>
     )
 }
